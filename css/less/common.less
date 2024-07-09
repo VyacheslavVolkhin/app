@@ -1,6 +1,15 @@
 /* ----------------------------------- *\
 		common styles
 \* ----------------------------------- */
+@keyframes flash {
+    0% {
+        opacity: .55;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 @keyframes fadein {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -9,10 +18,9 @@
     from {opacity: 0;transform: translate(0, -50px);}
     to {opacity: 1;transform: translate(0, 0px);}
 }
-.i {
-	display: inline-block;
-	vertical-align: middle;
-	transition: none;
+.i, [class*="icon-"] {
+    display: block;
+    transition: none;
 }
 .img-bg-cover,
 .img-bg-contain {
@@ -46,47 +54,95 @@
         bottom: auto;
     }
 }
-.js-btn-toggle.active+.js-popup-block {display: block !important;}
-.js-popup-block {-webkit-animation: fadein ease 0.3s;animation: fadein ease 0.3s;}
+.js-btn-popup-toggle.active+.js-popup-block {display: block !important;}
+.js-popup-block {animation: fadein ease 0.3s;}
 .js-tab-block {
-	display: none;
-	animation: fadein ease 0.2s;
-	&.active {
-		display: block;
+    animation: fadein ease 0.2s;
+    &:not(.active) {
+		display: none;
+	}
+	&.tab-slider {
+		&:not(.active) {
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			opacity: 0;
+			pointer-events: none;
+			height: 0;
+			position: relative;
+			overflow: hidden;
+		}
 	}
 }
-.items-wrap {
+.items-wrap, .tile-items-wrap {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+	margin: 0 -10px -20px -10px;
 }
-.item-wrap {
+.item-wrap, .tile-item-wrap {
     width: 100%;
     position: relative;
     break-inside: avoid-column;
     display: block;
     animation: fadein ease 0.2s;
-    &.wrap-more {
-        &~.item-wrap {
-            display: none;
-        }
-        &.active {
-            display: none;
-            &~.item-wrap {
-                display: block;
-            }
-        }
-    }
+	padding: 0 10px;
+	margin-bottom: 20px;
 }
-.slider-wrap,
-.slider,
-.sl-wrap {
-    position: relative;
-    line-height: 1;
+.tile-many-lines, .text-many-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+	overflow: hidden;
+}
+/* 
+
+add to head box
+
+<style>
+	.tile-many-lines, .text-many-lines {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+</style>
+
+ */
+.item-tile,
+.tile-outer-wrap,
+.tile-inner-wrap,
+.tile-photo-wrap,
+.tile-photos-wrap,
+.tile-info-wrap,
+.tile-text-wrap,
+.tile-title-wrap,
+.tile-desc-wrap,
+.tile-actions-wrap,
+.tile-action-wrap,
+.tile-ico,
+.tile-photo,
+.tile-info,
+.tile-text,
+.tile-title,
+.tile-desc {
     display: block;
+    position: relative;
 }
-.sl-wrap~.sl-wrap {
-    display: none;
+.tile-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    overflow: hidden;
+    text-indent: -999px;
+    font-size: 0;
+    color: transparent;
+}
+.tile-photo {
+    //transform: translateZ(0);
 }
 .no-mbottom {
     margin-bottom: 0 !important;
@@ -94,16 +150,173 @@
 .no-mtop {
     margin-top: 0 !important;
 }
+.no-pbottom {
+    padding-bottom: 0 !important;
+}
+.no-ptop {
+    padding-top: 0 !important;
+}
 .elm-hidden {
     display: none !important;
+}
+input.form-clear-autofill::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+
+//.slick-dots {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    flex-wrap: wrap;
+//    position: relative;
+//    line-height: 1;
+//    text-align: center;
+//    font-size: 0;
+//    margin: 0;
+//    li {
+//        margin: 0 4px 0 4px;;
+//        padding: 0;
+//        display: block;
+//        &:before {
+//            display: none;
+//        }
+//        button {
+//            background: none;
+//            border: none;
+//            min-width: 0;
+//            padding: 0;
+//            box-shadow: none;
+//            font-size: 0;
+//			border-radius: 50%;
+//            width: 10px;
+//            height: 10px;
+//			background: var(--clr-light);
+//            &:hover, &.active {
+//                background: none;
+//            }
+//        }
+//    }
+//    .slick-active {
+//        button {
+//			background-color: var(--clr-att);
+//        }
+//    }
+//}
+.sl-wrap.swiper-slide {
+	height: auto;
+}
+.swiper, .swiper-wrapper {
+	position: relative;
+}
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+	top: auto;
+	bottom: auto;
+}
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+	margin: 0 4px 4px 0;
+}
+.slider-wrap {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+.sl-wrap {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.slider-pagination {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 0;
+	position: relative;
+	width: 100%;
+	padding: 20px 0 0 0;
+	.swiper-pagination-bullet {
+		display: block;
+		width: 40px;height: 4px;
+		border-radius: 50%;
+		background: #fff;
+		background: #A69C90;
+		opacity: 1;
+		transition: all ease 0.2s;
+		cursor: pointer;
+		padding: 0;
+		margin: 0 4px 4px 0;
+		border-radius: 0;
+		flex-shrink: 0;
+		opacity: 0.35;
+		transition: all ease 0.2s;
+		&:hover, &.swiper-pagination-bullet-active {
+			opacity: 1;
+		}
+	}
+}
+.is-modern .f-thumbs__slide__button {
+	clip-path: inherit !important;
 }
 @media (max-width: 1023px) {
     .elm-hidden-mobile {
         display: none !important;
     }
+	.items-wrap, .tile-items-wrap {
+		&.space-small {
+			margin: 0 -5px -10px -5px;
+			.item-wrap, .tile-item-wrap {
+				padding: 0 5px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+@media (min-width: 640px) {
+	.item-wrap, .tile-item-wrap {
+		width: 50%;
+	}
 }
 @media (min-width: 1024px) {
+	.slider-wrap {
+		margin-left: -1.5rem;
+		margin-right: -1.5rem;
+	}
+	.sl-wrap {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+	.items-wrap, .tile-items-wrap {
+		margin: 0 -1.5rem -3rem -1.5rem;
+	}
+	.item-wrap, .tile-item-wrap {
+		padding: 0 1.5rem;
+		margin-bottom: 3rem;
+		width: 33.33%;
+	}
+	.col-2 {
+		.item-wrap, .tile-item-wrap {
+			width: 50%;
+		}
+	}
+	.col-4 {
+		.item-wrap, .tile-item-wrap {
+			width: 25%;
+		}
+	}
+	.col-catalog {
+		.item-wrap {
+			width: 33.33%;
+		}
+	}
     .elm-hidden-desktop {
         display: none !important;
     }
+}
+@media (min-width: 1200px) {
+	.col-catalog {
+		.item-wrap {
+			width: 25%;
+		}
+	}
 }
