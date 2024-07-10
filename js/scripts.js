@@ -1,33 +1,53 @@
 
+
 //field counter
-const plusButton = document.querySelector(".js-button-counter-plus");
-const minusButton = document.querySelector(".js-button-counter-minus");
-const inputCounter = document.querySelector(".js-input-counter");
-if (inputCounter) {
-	plusButton.addEventListener("click", function (event) {
-	  increaseCounter();
+const plusButtons = document.querySelectorAll(".js-button-counter-plus");
+const minusButtons = document.querySelectorAll(".js-button-counter-minus");
+const inputCounters = document.querySelectorAll(".js-input-counter");
+
+if (inputCounters) {
+  for (let i = 0; i < inputCounters.length; i++) {
+	const plusButton = plusButtons[i
+		];
+	const minusButton = minusButtons[i
+		];
+	const inputCounter = inputCounters[i
+		];
+
+	plusButton.addEventListener("click", function(event) {
+	  increaseCounter(inputCounter);
 	  event.preventDefault();
-	});
-  minusButton.addEventListener("click", function (event) {
-	decreaseCounter();
-	event.preventDefault();
-	});
-  function increaseCounter() {
-	let value = parseInt(inputCounter.value);
-	value++;
-	inputCounter.value = value;
-	}
-  function decreaseCounter() {
-	const buttonMinus = this; 
-	let value = parseInt(inputCounter.value);
-	if (value > 1) {
-	  value--;
-		} else {
-	  value = 1;
-		}
-	inputCounter.value = value;
+		});
+
+	minusButton.addEventListener("click", function(event) {
+	  decreaseCounter(inputCounter);
+	  event.preventDefault();
+		});
 	}
 }
+
+function increaseCounter(inputCounter) {
+  let value = parseInt(inputCounter.value);
+  value++;
+  inputCounter.value = value;
+}
+
+function decreaseCounter(inputCounter) {
+  const buttonMinus = this;
+  let value = parseInt(inputCounter.value);
+
+  if (value > 1) {
+	value--;
+	} else {
+	value = 1;
+	}
+
+  inputCounter.value = value;
+}
+
+
+
+
 
 //js tabs
 const tabsNav = document.querySelectorAll(".js-tabs-nav");
@@ -247,12 +267,14 @@ document.querySelectorAll(".popup-outer-box").forEach(function (element) {
 
 
 //cart button catalog
-const cartButton = document.querySelector(".js-button-cart");
+const cartButton = document.querySelectorAll(".js-button-cart");
 if (cartButton) {
-	cartButton.addEventListener("click", function (event) {
-		this.closest('.cart-field').classList.add('cart-added');
-		event.preventDefault();
-  });
+	for (i=0;i<cartButton.length;i++) {
+		cartButton[i].addEventListener("click", function (event) {
+      this.closest(".cart-field").classList.add("cart-added");
+      event.preventDefault();
+    });
+	}
 }
 
 //form input clear
@@ -379,8 +401,32 @@ const swiperSliderPhotos = new Swiper(".slider-photos .swiper", {
   },
 });
 
+
+
+//slider media thumbs preview
+const swiperMediaPreview = new Swiper(".slider-media-thumbs .swiper",
+{
+  loop: false,
+  slidesPerView: "auto",
+  spaceBetween: 0,
+  threshold: 5,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+  freeMode: false,
+  navigation: {
+	nextEl: ".button-slider-media-thumbs-next",
+	prevEl: ".button-slider-media-thumbs-prev",
+	},
+  breakpoints: {
+		1024: {
+	  direction: "vertical",
+		},
+	},
+});
+
 //slider media thumbs main
-const swiperMediaMain = new Swiper(".slider-media-main .swiper", {
+const swiperMediaMain = new Swiper(".slider-media-main .swiper",
+{
   loop: false,
   slidesPerView: 1,
   spaceBetween: 0,
@@ -390,33 +436,16 @@ const swiperMediaMain = new Swiper(".slider-media-main .swiper", {
   freeMode: false,
   watchSlidesProgress: true,
   navigation: {
-    nextEl: ".button-slider-media-main-next",
-    prevEl: ".button-slider-media-main-prev",
-  },
-});
-//slider media thumbs preview
-const swiperMediaPreview = new Swiper(".slider-media-thumbs .swiper", {
-  loop: false,
-  slidesPerView: "auto",
-  spaceBetween: 0,
-  threshold: 5,
-  watchSlidesVisibility: true,
-  watchSlidesProgress: true,
-  freeMode: false,
-  navigation: {
-    nextEl: ".button-slider-media-thumbs-next",
-    prevEl: ".button-slider-media-thumbs-prev",
-  },
+	nextEl: ".button-slider-media-main-next",
+	prevEl: ".button-slider-media-main-prev",
+	},
+  pagination: {
+	clickable: true,
+	},
   thumbs: {
-    swiper: swiperMediaMain,
-  },
-  breakpoints: {
-    1024: {
-      direction: "vertical",
-    },
-  },
+	swiper: swiperMediaPreview,
+	},
 });
-
 
 
 
@@ -552,25 +581,63 @@ const swiperSliderMaintiles = new Swiper('.slider-maintiles .swiper', {
 });
 
 //slider maintilessecond
-const swiperSliderMaintilessecond = new Swiper('.slider-maintilessecond .swiper', {
+const swiperSliderMaintilessecond = new Swiper(
+  ".slider-maintilessecond .swiper",
+  {
+    loop: false,
+    slidesPerView: "auto",
+    spaceBetween: 0,
+    autoHeight: true,
+    speed: 400,
+    pagination: {
+      el: ".slider-maintilessecond-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    navigation: false,
+    breakpoints: {
+      1024: {
+        slidesPerView: 5,
+      },
+      1200: {
+        slidesPerView: 6,
+      },
+    },
+  }
+);
+
+
+//slider maintop
+const swiperSliderMaintop = new Swiper('.slider-maintop .swiper', {
 	loop: false,
-	slidesPerView: 'auto',
+	slidesPerView: 1,
 	spaceBetween: 0,
 	autoHeight: true,
 	speed: 400,
-	pagination: {
-		el: '.slider-maintilessecond-pagination',
-		clickable: true,
+	pagination: false,
+	autoplay: {
+		delay: 3000,
+		disableOnInteraction: false,
 	},
-	autoplay: false,
 	navigation: false,
-	breakpoints: {
-		1024: {
-			slidesPerView: 5,
-		},
-		1200: {
-			slidesPerView: 6,
-		},
+
+});
+
+//slider cat
+const swiperSliderCat = new Swiper('.slider-cat .swiper', {
+	loop: false,
+	slidesPerView: 1,
+	spaceBetween: 0,
+	autoHeight: true,
+	speed: 400,
+	pagination: false,
+	autoplay: {
+		delay: 2500,
+		disableOnInteraction: false,
 	},
+	navigation: false,
 
 });
