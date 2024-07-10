@@ -641,3 +641,24 @@ const swiperSliderCat = new Swiper('.slider-cat .swiper', {
 	navigation: false,
 
 });
+
+
+// items animations
+let sTop = window.scrollY + window.innerHeight;
+const items = document.querySelectorAll('.item-animation');
+items.forEach(function (item) {
+  if (item.offsetTop < sTop) {
+	item.classList.add('item-active');
+	}
+});
+window.addEventListener('scroll', function () {
+  sTop = this.scrollY + this.innerHeight; // Обновляем позицию прокрутки
+
+  items.forEach((item) => { // Проверяем все элементы с классом item-animation
+	if (item.offsetTop < sTop) { // Если он находится ниже позиции прокрутки
+	  item.classList.add('item-active'); // Добавляем класс item-active
+		} else {
+	  item.classList.remove('item-active'); // Иначе удаляем класс
+		}
+	});
+});
