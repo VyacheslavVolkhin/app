@@ -452,9 +452,12 @@
                                     <!--/sl-wrap-->
                                     <!--sl-wrap-->
                                     <div class="sl-wrap swiper-slide">
-                                        <a href="./img/card.jpg" class="elm-photo photo-cover" data-fancybox="card">
-                                            <img src="./img/card.jpg" alt="">
-                                        </a>
+                                        <div class="item-tile-video js-video" data-video="https://www.youtube.com/embed/ScMzIvxBSi4?controls=0">
+                                            <div class="tile-bg">
+                                                <img src="./img/card.jpg" alt="" class="img-bg-cover">
+                                            </div>
+                                            <div class="btn-play js-btn-video"></div>
+                                        </div>
                                     </div>
                                     <!--/sl-wrap-->
                                 </div>
@@ -1446,6 +1449,13 @@
                             </div>
                         </div>
                         <div class="frm-row-submit">
+                            <div class="frm-field field-info">
+                                <div class="frm-select">
+                                    <input type="checkbox" id="popup">
+                                    <label for="popup">Нажимая кнопку «Оформить заказ», Вы даете свое согласие
+                                        на <a href="">обработку персональных данных</a></label>
+                                </div>
+                            </div>
                             <div class="frm-field">
                                 <button type="submit" class="btn button-border">Отправить</button>
                             </div>

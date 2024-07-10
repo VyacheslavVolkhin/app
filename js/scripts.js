@@ -1,5 +1,4 @@
 
-
 //field counter
 const plusButtons = document.querySelectorAll(".js-button-counter-plus");
 const minusButtons = document.querySelectorAll(".js-button-counter-minus");
@@ -7,6 +6,20 @@ const inputCounters = document.querySelectorAll(".js-input-counter");
 
 if (inputCounters) {
   for (let i = 0; i < inputCounters.length; i++) {
+	if (inputCounters[i
+		].value == 1) {
+		inputCounters[i
+			]
+	  .closest(".js-counter")
+	  .querySelector(".js-button-counter-minus")
+	  .classList.add("button-disabled");
+		} else {
+		inputCounters[i
+			]
+	  .closest(".js-counter")
+	  .querySelector(".js-button-counter-minus")
+	  .classList.remove("button-disabled");
+		}
 	const plusButton = plusButtons[i
 		];
 	const minusButton = minusButtons[i
@@ -16,11 +29,43 @@ if (inputCounters) {
 
 	plusButton.addEventListener("click", function(event) {
 	  increaseCounter(inputCounter);
+	  for (let i = 0; i < inputCounters.length; i++) {
+	  if (inputCounters[i
+				].value == 1) {
+		inputCounters[i
+					]
+		  .closest(".js-counter")
+		  .querySelector(".js-button-counter-minus")
+		  .classList.add("button-disabled");
+				} else {
+		inputCounters[i
+					]
+		  .closest(".js-counter")
+		  .querySelector(".js-button-counter-minus")
+		  .classList.remove("button-disabled");
+				}
+			}
 	  event.preventDefault();
 		});
 
 	minusButton.addEventListener("click", function(event) {
 	  decreaseCounter(inputCounter);
+	  for (let i = 0; i < inputCounters.length; i++) {
+	  if (inputCounters[i
+				].value == 1) {
+		inputCounters[i
+					]
+		  .closest(".js-counter")
+		  .querySelector(".js-button-counter-minus")
+		  .classList.add("button-disabled");
+				} else {
+		inputCounters[i
+					]
+		  .closest(".js-counter")
+		  .querySelector(".js-button-counter-minus")
+		  .classList.remove("button-disabled");
+				}
+			}
 	  event.preventDefault();
 		});
 	}
@@ -117,6 +162,12 @@ const bodyElem = document.querySelector("body");
 function popupElementsClear() {
   document.body.classList.remove("menu-show");
   document.body.classList.remove("search-show");
+  if (document.querySelector('.header .frm-main-search .frm-field-input')) {
+	document
+    .querySelector(".header .frm-main-search .frm-field-input")
+    .classList.remove("results-active");
+	document.querySelector(".header .frm-main-search .frm-field-input input").value = "";
+  }
   popupElements.forEach((element) => element.classList.remove("popup-right"));
 }
 function popupElementsClose() {
@@ -626,21 +677,22 @@ const swiperSliderMaintop = new Swiper('.slider-maintop .swiper', {
 
 });
 
-//slider cat
-const swiperSliderCat = new Swiper('.slider-cat .swiper', {
-	loop: false,
-	slidesPerView: 1,
-	spaceBetween: 0,
-	autoHeight: true,
-	speed: 400,
-	pagination: false,
-	autoplay: {
-		delay: 2500,
-		disableOnInteraction: false,
-	},
-	navigation: false,
+// //slider cat
+// const swiperSliderCat = new Swiper('.slider-cat .swiper', {
+// 	loop: false,
+// 	slidesPerView: 1,
+// 	spaceBetween: 0,
+// 	autoHeight: true,
+// 	speed: 400,
+// 	pagination: false,
+// 	autoplay: false,
+// 	// autoplay: {
+// 	// 	delay: 2500,
+// 	// 	disableOnInteraction: false,
+// 	// },
+// 	navigation: false,
 
-});
+// });
 
 
 // items animations
@@ -662,3 +714,26 @@ window.addEventListener('scroll', function () {
 		}
 	});
 });
+
+
+//video
+const btnVideo = document.querySelectorAll(".js-btn-video");
+for (let i = 0; i < btnVideo.length; i++) {
+  btnVideo[i].addEventListener("click", function (e) {
+    console.log("test");
+    const videoURL = this.parentNode.dataset.video;
+    this.parentNode.classList.add("active");
+    this.parentNode.innerHTML += `<iframe width="100%" height="100%" src="${videoURL}" frameborder="0" allowfullscreen></iframe>`;
+    e.preventDefault;
+  });
+}
+
+//field promocode
+const input = document.querySelector(".frm-field-send input");
+const button = document.querySelector(".frm-field-send button");
+
+if (input) {
+	input.addEventListener("input", function () {
+    button.classList.toggle("button-disabled", !input.value);
+  });
+}

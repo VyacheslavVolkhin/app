@@ -84,6 +84,10 @@
 		letter-spacing: 1.643px;
 		color: var(--clr-base);
 		font-weight: 400;
+		&:focus {
+			background: none;
+			box-shadow: none;
+		}
 	}
 	.button-plus, .button-minus {
 		display: block;
@@ -92,7 +96,7 @@
 		top: 0;left: 0;
 		z-index: 2;
 		&.button-disabled {
-			opacity: 0.6;
+			opacity: 0.2;
 			pointer-events: none;
 		}
 		&:before, &:after {
@@ -188,6 +192,14 @@
 		padding-top: 10px;
 		.frm-field {
 			margin-bottom: 0;
+		}
+	}
+	.frm-select {
+		label {
+			font-size: 14px;
+			line-height: 18px;
+			padding-top: 3px;
+			padding-bottom: 15px;
 		}
 	}
 }
@@ -369,7 +381,9 @@
 			&:checked {
 				&~label {
 					&:before {
-						background-color: #F8F7F7;
+						background-color: #fff;
+						box-shadow: none;
+						border: 1px solid var(--clr-title);
 					}
 				}
 			}
@@ -391,7 +405,9 @@
 			&:checked {
 				&~label {
 					&:before {
-						background-color: #F8F7F7;
+						background-color: #fff;
+						box-shadow: none;
+						border: 1px solid var(--clr-title);
 					}
 				}
 			}
@@ -419,12 +435,14 @@
 			width: 24px;height: 24px;
 			border-radius: 6px;
 			background: #F8F7F7;
-			box-shadow: inset 0 0 5px fade(#000, 10);
 			position: absolute;
 			top: 12px;
 			left: 12px;
 			margin: -12px 0 0 -12px;
 			transition: all ease 0.2s;
+		}
+		&:before {
+			box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.05) inset;
 		}
 		&:after {
 			border-radius: 0;
@@ -455,6 +473,7 @@
 		}
 		textarea.form-input {
 			height: 490px;
+			max-height: 30dvh;
 		}
 	}
 }
