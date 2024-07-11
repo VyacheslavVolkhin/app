@@ -109,6 +109,8 @@ select::-ms-expand {
 		border: 1px solid #EDEBE9;
 		background: none;
 		padding: 0 56px 0 19px;
+		justify-content: flex-start;
+		text-align: left;
 		font-size: 17px;
 		line-height: 20px;
 		color: var(--clr-base);
@@ -451,11 +453,13 @@ select::-ms-expand {
 		}
 	}
 	&.ico-close {
+		cursor: pointer;
 		&:before {
 			background-image: url(../img/icons/cross.svg);
 		}
 	}
 	&.ico-close-small {
+		cursor: pointer;
 		&:before {
 			background-image: url(../img/icons/cross-small.svg);
 		}

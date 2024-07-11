@@ -1573,6 +1573,18 @@ html {
   left: -40px;
   right: -60px;
 }
+.item-tile-main.bg-red {
+  background-color: #D90751;
+}
+.item-tile-main.bg-violet {
+  background-color: #B02DD0;
+}
+.item-tile-main.bg-orange {
+  background-color: #ED6F26;
+}
+.item-tile-main.bg-green {
+  background-color: #14D361;
+}
 .item-tile-order {
   display: -ms-flexbox;
   display: flex;
@@ -2644,6 +2656,16 @@ html {
     bottom: 0;
     right: 0;
   }
+  .item-tile-main.tile-mobile-small.tile-mobile-main .tile-photo {
+    top: 0;
+    bottom: 0;
+    height: 60px;
+  }
+  .item-tile-main.tile-mobile-small.tile-mobile-main .tile-photo img {
+    max-width: inherit;
+    height: 100%;
+    width: auto;
+  }
 }
 @media (max-width: 399px) {
   .item-tile-cart .tile-photo-wrap {
@@ -2932,11 +2954,11 @@ html {
   border-radius: 6px;
   position: relative;
   overflow: hidden;
-  background: var(--clr-att-hover);
   color: #fff;
   display: block;
 }
 .main-top-box .box-outer-wrap {
+  background: var(--clr-att-hover);
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: end;
@@ -2989,6 +3011,18 @@ html {
 .main-top-box .sl-wrap {
   overflow: hidden;
   position: relative;
+}
+.main-top-box .bg-red {
+  background-color: #D90751;
+}
+.main-top-box .bg-violet {
+  background-color: #B02DD0;
+}
+.main-top-box .bg-orange {
+  background-color: #ED6F26;
+}
+.main-top-box .bg-green {
+  background-color: #14D361;
 }
 .info-section-box {
   display: block;
@@ -3674,6 +3708,11 @@ html {
 .photos-slider-box .elm-photo {
   aspect-ratio: 360/250;
   border-radius: 6px;
+}
+.photos-slider-box .elm-photo + .elm-photo {
+  display: none;
+  margin-top: 30px;
+  margin-top: 3rem;
 }
 .photos-slider-box .slider-pagination {
   padding-left: 15px;
@@ -4414,11 +4453,20 @@ body.popup-open {
     margin-bottom: -3rem;
   }
   .photos-slider-box .sl-wrap {
-    height: 21rem !important;
+    width: 25%;
+  }
+  .photos-slider-box .slide-main {
+    width: 50%;
+  }
+  .photos-slider-box .slide-main .elm-photo {
+    height: 39rem;
   }
   .photos-slider-box .elm-photo {
     aspect-ratio: inherit;
     height: 18rem;
+  }
+  .photos-slider-box .elm-photo + .elm-photo {
+    display: block;
   }
   .rate-box {
     margin-bottom: 8rem;
@@ -4711,6 +4759,9 @@ select::-ms-expand {
   border: 1px solid #EDEBE9;
   background: none;
   padding: 0 56px 0 19px;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  text-align: left;
   font-size: 17px;
   line-height: 20px;
   color: var(--clr-base);
@@ -5033,8 +5084,14 @@ select::-ms-expand {
 .btn-action-ico.ico-del:hover:before {
   opacity: 0.5;
 }
+.btn-action-ico.ico-close {
+  cursor: pointer;
+}
 .btn-action-ico.ico-close:before {
   background-image: url(../img/icons/cross.svg);
+}
+.btn-action-ico.ico-close-small {
+  cursor: pointer;
 }
 .btn-action-ico.ico-close-small:before {
   background-image: url(../img/icons/cross-small.svg);
@@ -5156,6 +5213,71 @@ select::-ms-expand {
 /* ----------------------------------- *\
 			forms elements styles
 \* ----------------------------------- */
+.frm-rate-set {
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 192px;
+  height: 30px;
+  line-height: 1;
+}
+.frm-rate-set:hover .frm-rate {
+  background-image: url(../img/icons/rate-set.svg) !important;
+}
+.frm-rate-set:hover .frm-rate:hover ~ .frm-rate {
+  background-image: url(../img/icons/rate-set-empty.svg) !important;
+}
+.frm-rate-set .frm-rate {
+  display: block;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  background-image: url(../img/icons/rate-set-empty.svg);
+  background-position: 0 center;
+  background-repeat: no-repeat;
+  background-size: 32px auto;
+  margin: 0;
+}
+.frm-rate-set .frm-rate:last-child {
+  margin: 0;
+}
+.frm-rate-set input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+}
+.frm-rate-set input:nth-child(1):checked ~ .frm-rate {
+  background-image: url(../img/icons/rate-set.svg);
+}
+.frm-rate-set input:nth-child(1):checked ~ .frm-rate ~ .frm-rate {
+  background-image: url(../img/icons/rate-set-empty.svg);
+}
+.frm-rate-set input:nth-child(2):checked ~ .frm-rate {
+  background-image: url(../img/icons/rate-set.svg);
+}
+.frm-rate-set input:nth-child(2):checked ~ .frm-rate ~ .frm-rate ~ .frm-rate {
+  background-image: url(../img/icons/rate-set-empty.svg);
+}
+.frm-rate-set input:nth-child(3):checked ~ .frm-rate {
+  background-image: url(../img/icons/rate-set.svg);
+}
+.frm-rate-set input:nth-child(3):checked ~ .frm-rate ~ .frm-rate ~ .frm-rate ~ .frm-rate {
+  background-image: url(../img/icons/rate-set-empty.svg);
+}
+.frm-rate-set input:nth-child(4):checked ~ .frm-rate {
+  background-image: url(../img/icons/rate-set.svg);
+}
+.frm-rate-set input:nth-child(4):checked ~ .frm-rate ~ .frm-rate ~ .frm-rate ~ .frm-rate ~ .frm-rate {
+  background-image: url(../img/icons/rate-set-empty.svg);
+}
+.frm-rate-set input:nth-child(5):checked ~ .frm-rate {
+  background-image: url(../img/icons/rate-set.svg);
+}
 .frm-field-send {
   display: block;
   position: relative;
@@ -5345,6 +5467,33 @@ select::-ms-expand {
   margin-left: 16px;
   height: 20px;
   border-radius: 6px;
+}
+.frm-field-select .btn-select {
+  display: block;
+  padding: 6px 20px 6px 40px;
+  color: inherit;
+  position: relative;
+  text-align: left;
+}
+.frm-field-select .btn-select:hover {
+  color: var(--clr-att);
+}
+.frm-popup .row-rate {
+  padding-bottom: 40px;
+  padding-bottom: 4rem;
+}
+.frm-popup .row-rate .frm-field {
+  width: 50%;
+  margin-bottom: 14px;
+}
+.frm-popup .row-rate .field-title {
+  color: rgba(34, 16, 11, 0.35);
+  font-size: 17px;
+  letter-spacing: 0.17px;
+  line-height: 28px;
+  padding: 3px 0 13px 0;
+  font-weight: 400;
+  border-top: 1px solid #EDEBE9;
 }
 .frm-popup .frm-row,
 .frm-popup .frm-row-submit {
@@ -5627,6 +5776,11 @@ select::-ms-expand {
   .frm-popup textarea.form-input {
     height: 490px;
     max-height: 30dvh;
+  }
+}
+@media (max-width: 479px) {
+  .frm-popup .row-rate .frm-field {
+    width: 100%;
   }
 }
 @media (max-width: 399px) {

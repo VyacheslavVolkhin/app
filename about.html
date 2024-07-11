@@ -551,7 +551,7 @@
         <!--popup-outer-box-->
         <div class="popup-outer-box" id="popup-callback">
             <div class="popup-box">
-                <a href="" class="btn-popup-close btn-action-ico ico-close-small js-popup-close"></a>
+                <div class="btn-popup-close btn-action-ico ico-close-small js-popup-close"></div>
                 <div class="popup-title-wrap">
                     <div class="popup-title h2-title">Напишите нам</div>
                 </div>
@@ -584,7 +584,127 @@
                             <div class="frm-field field-info">
                                 <div class="frm-select">
                                     <input type="checkbox" id="popup">
-                                    <label for="popup">Нажимая кнопку «Оформить заказ», Вы даете свое согласие
+                                    <label for="popup">Нажимая кнопку «Отправить», Вы даете свое согласие
+                                        на <a href="">обработку персональных данных</a></label>
+                                </div>
+                            </div>
+                            <div class="frm-field">
+                                <button type="submit" class="btn button-border">Отправить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!--/popup-outer-box-->
+
+
+        <!--popup-outer-box-->
+        <div class="popup-outer-box" id="popup-review">
+            <div class="popup-box">
+                <div class="btn-popup-close btn-action-ico ico-close-small js-popup-close"></div>
+                <div class="popup-title-wrap">
+                    <div class="popup-title h2-title">Оставьте отзыв</div>
+                </div>
+                <div class="popup-content-wrap">
+                    <form action="/" class="frm-popup">
+                        <div class="frm-row row-rate">
+                            <div class="frm-field field-half">
+                                <div class="field-title">Общая оценка*</div>
+                                <div class="field-content">
+                                    <div class="frm-rate-set">
+                                        <input type="radio" name="rate01-set" id="rate01-set01">
+                                        <input type="radio" name="rate01-set" id="rate01-set02">
+                                        <input type="radio" name="rate01-set" id="rate01-set03">
+                                        <input type="radio" name="rate01-set" id="rate01-set04">
+                                        <input type="radio" name="rate01-set" id="rate01-set05">
+                                        <label for="rate01-set01" class="frm-rate"></label>
+                                        <label for="rate01-set02" class="frm-rate"></label>
+                                        <label for="rate01-set03" class="frm-rate"></label>
+                                        <label for="rate01-set04" class="frm-rate"></label>
+                                        <label for="rate01-set05" class="frm-rate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-field field-half">
+                                <div class="field-title">Консультация*</div>
+                                <div class="field-content">
+                                    <div class="frm-rate-set">
+                                        <input type="radio" name="rate02-set" id="rate02-set01">
+                                        <input type="radio" name="rate02-set" id="rate02-set02">
+                                        <input type="radio" name="rate02-set" id="rate02-set03">
+                                        <input type="radio" name="rate02-set" id="rate02-set04" checked>
+                                        <input type="radio" name="rate02-set" id="rate02-set05">
+                                        <label for="rate02-set01" class="frm-rate"></label>
+                                        <label for="rate02-set02" class="frm-rate"></label>
+                                        <label for="rate02-set03" class="frm-rate"></label>
+                                        <label for="rate02-set04" class="frm-rate"></label>
+                                        <label for="rate02-set05" class="frm-rate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-field field-half">
+                                <div class="field-title">Качество доставки*</div>
+                                <div class="field-content">
+                                    <div class="frm-rate-set">
+                                        <input type="radio" name="rate03-set" id="rate03-set01">
+                                        <input type="radio" name="rate03-set" id="rate03-set02">
+                                        <input type="radio" name="rate03-set" id="rate03-set03">
+                                        <input type="radio" name="rate03-set" id="rate03-set04">
+                                        <input type="radio" name="rate03-set" id="rate03-set05">
+                                        <label for="rate03-set01" class="frm-rate"></label>
+                                        <label for="rate03-set02" class="frm-rate"></label>
+                                        <label for="rate03-set03" class="frm-rate"></label>
+                                        <label for="rate03-set04" class="frm-rate"></label>
+                                        <label for="rate03-set05" class="frm-rate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-field field-half">
+                                <div class="field-title">Качество товара*</div>
+                                <div class="field-content">
+                                    <div class="frm-rate-set">
+                                        <input type="radio" name="rate04-set" id="rate04-set01">
+                                        <input type="radio" name="rate04-set" id="rate04-set02">
+                                        <input type="radio" name="rate04-set" id="rate04-set03">
+                                        <input type="radio" name="rate04-set" id="rate04-set04">
+                                        <input type="radio" name="rate04-set" id="rate04-set05">
+                                        <label for="rate04-set01" class="frm-rate"></label>
+                                        <label for="rate04-set02" class="frm-rate"></label>
+                                        <label for="rate04-set03" class="frm-rate"></label>
+                                        <label for="rate04-set04" class="frm-rate"></label>
+                                        <label for="rate04-set05" class="frm-rate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frm-row">
+                            <div class="frm-field">
+                                <input type="text" class="form-input" placeholder="Ваше имя*">
+                            </div>
+                        </div>
+                        <div class="frm-row">
+                            <div class="frm-field">
+                                <input type="email" class="form-input" placeholder="E-mail*">
+                            </div>
+                        </div>
+                        <div class="frm-row">
+                            <div class="frm-field">
+                                <input type="tel" class="form-input" placeholder="Телефон*">
+                            </div>
+                            <div class="frm-field field-button">
+                                <a href="" class="btn button-add"></a>
+                            </div>
+                        </div>
+                        <div class="frm-row">
+                            <div class="frm-field">
+                                <textarea class="form-input" placeholder="Ваш отзы*"></textarea>
+                            </div>
+                        </div>
+                        <div class="frm-row-submit">
+                            <div class="frm-field field-info">
+                                <div class="frm-select">
+                                    <input type="checkbox" id="popup02">
+                                    <label for="popup02">Нажимая кнопку «Отправить», Вы даете свое согласие
                                         на <a href="">обработку персональных данных</a></label>
                                 </div>
                             </div>
