@@ -5213,6 +5213,67 @@ select::-ms-expand {
 /* ----------------------------------- *\
 			forms elements styles
 \* ----------------------------------- */
+.frm-field-file {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.frm-field-file input[type="file"] {
+  display: block;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  opacity: 0;
+  top: 110%;
+  left: 110%;
+  position: absolute;
+  z-index: -999;
+}
+.frm-field-file .btn {
+  height: 24px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  text-transform: none;
+  max-width: 100%;
+  line-height: 16px;
+  padding: 4px 0 0 34px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 400;
+  min-width: 0;
+}
+.frm-field-file .btn:before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  background: url(../img/icons/attach.svg) center no-repeat;
+  background-size: 100% auto;
+  top: 0;
+  left: 0;
+}
+.frm-field-file .btn .button-title {
+  display: block;
+  height: 16px;
+  line-height: 16px;
+  max-width: 100%;
+  font-weight: 300;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .frm-rate-set {
   display: -ms-flexbox;
   display: flex;

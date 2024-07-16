@@ -1,4 +1,26 @@
 
+//files add
+document.querySelector('.js-field-file .js-file-button').addEventListener('click', function() {
+  this.parentElement.querySelector('input[type="file"]').click();
+});
+const inputs = document.querySelectorAll('.js-field-file input[type="file"]');
+for (let i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener('change', function(event) {
+	let fileName = event.target.value;
+	if (fileName == '') {
+	  fileName = this.parentNode.querySelector('.js-file-button').getAttribute('data-title');
+
+	  this.parentNode.classList.remove('active');
+	  this.parentNode.querySelector('.js-file-button .button-title').innerHTML = fileName;
+	} else {
+	  this.parentNode.classList.add('active');
+	  this.parentNode.querySelector('.js-file-button .button-title').innerHTML = fileName;
+	}
+  });
+}
+
+
+
 //field counter
 const plusButtons = document.querySelectorAll(".js-button-counter-plus");
 const minusButtons = document.querySelectorAll(".js-button-counter-minus");
