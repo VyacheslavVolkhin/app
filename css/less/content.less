@@ -1115,7 +1115,7 @@ body.popup-open {
 	max-width: 100%;
 	max-height: 100%;
 	z-index: 20;
-	padding: 5rem 10rem;
+	
 	background: #fff;
 	border-radius: 6px;
 	.popup-title-wrap, .popup-footer-wrap {
@@ -1125,6 +1125,7 @@ body.popup-open {
 	.popup-content-wrap {
 		width: 100%;
 		overflow: auto;
+		padding: 26px 10rem 5rem 10rem;
 		-ms-overflow-style: none;
 		&::-webkit-scrollbar {
 			width: 0;
@@ -1132,7 +1133,7 @@ body.popup-open {
 		}
 	}
 	.popup-title-wrap {
-		margin-bottom: 26px;
+		padding: 5rem 10rem 0 10rem;
 	}
 	.btn-popup-close {
 		position: absolute;
@@ -1322,7 +1323,12 @@ body.popup-open {
 		left: 0;
 		right: 0;
 		border-radius: 0;
-		padding: 20px;
+		.popup-title-wrap {
+			padding: 20px 20px 0 20px;
+		}
+		.popup-content-wrap {
+			padding: 20px 20px 20px 20px;
+		}
 	}
 }
 @media (max-width: 399px) {
